@@ -30,6 +30,7 @@ export default class DrawerLayout extends React.Component {
   static defaultProps = {
     drawerWidth: 0,
     drawerPosition: 'left',
+    overlayBackgroundColor: '#000' 
   };
 
   static positions = {
@@ -141,7 +142,10 @@ export default class DrawerLayout extends React.Component {
       outputRange: [0, 0.7],
       extrapolate: 'clamp',
     });
-    const animatedOverlayStyles = { opacity: overlayOpacity };
+    const animatedOverlayStyles = { 
+      opacity: overlayOpacity,
+      backgroundColor: this.props.overlayBackgroundColor
+    };
 
     return (
       <View style={{ flex: 1, backgroundColor: 'transparent' }} {...this._panResponder.panHandlers}>
@@ -339,7 +343,6 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   overlay: {
-    backgroundColor: '#000',
     position: 'absolute',
     top: 0,
     left: 0,
